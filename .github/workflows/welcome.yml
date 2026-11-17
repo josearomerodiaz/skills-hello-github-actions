@@ -28,3 +28,24 @@ jobs:
     # Máquina/sistema operativo donde queremos ejecutar el job
     runs-on: ubuntu-latest
 
+# Lista de pasos que ejecutará el job "welcome".
+# Los steps se ejecutan en orden, uno detrás de otro.
+    steps:
+    
+      # Ejecuta un comando dentro de la máquina Ubuntu que definimos con runs-on.
+      # "gh" es GitHub CLI.
+      # "pr comment" indica que queremos añadir un comentario a una Pull Request.
+      # "$PR_URL" contiene la dirección de la Pull Request que queremos comentar.
+      # "--body" establece el texto que publicaremos.
+      - run: gh pr comment "$PR_URL" --body "Welcome to the repository!"
+    
+        # Variables de entorno disponibles para el comando anterior.
+        env:
+    
+          # Token que permite a GitHub CLI autenticarse contra GitHub.
+          # GitHub crea este token automáticamente durante la ejecución.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    
+          # Obtenemos la URL de la Pull Request que ha provocado el workflow
+          # y la guardamos en la variable PR_URL.
+          PR_URL: ${{ github.event.pull_request.html_url }}
