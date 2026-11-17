@@ -1,8 +1,17 @@
+# Nombre que tendrá el workflow dentro de GitHub Actions. # Es simplemente un nombre descriptivo.
 name: Post welcome comment
 
+# "on" define CUÁNDO se debe ejecutar el workflow.
 on:
+
+  # El evento que estamos vigilando es una Pull Request.
   pull_request:
+
+    # No queremos ejecutarlo ante cualquier cambio de la Pull Request.     # Solo cuando la Pull Request acaba de ser abierta.
     types: [opened]
 
+# Permisos que tendrá el workflow cuando se ejecute.
 permissions:
+
+  # Permitimos que el workflow escriba sobre Pull Requests.  # Por ejemplo, podrá publicar un comentario automáticamente.
   pull-requests: write
