@@ -15,3 +15,16 @@ permissions:
 
   # Permitimos que el workflow escriba sobre Pull Requests.  # Por ejemplo, podrá publicar un comentario automáticamente.
   pull-requests: write
+
+# Aquí definimos los trabajos que ejecutará nuestro workflow
+jobs:
+
+  # Identificador interno de nuestro primer job
+  welcome:
+
+    # Nombre descriptivo que veremos en GitHub Actions
+    name: Post welcome comment
+
+    # Máquina/sistema operativo donde queremos ejecutar el job
+    runs-on: ubuntu-latest
+
